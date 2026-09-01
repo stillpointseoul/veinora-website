@@ -583,20 +583,51 @@
           <input type="text" id="vnr-contact-company" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
 
+        <fieldset class="vnr-contact-field vnr-contact-fieldset">
+          <legend>문의 구분 <span aria-hidden="true">*</span></legend>
+          <div class="vnr-contact-type-group">
+            <span class="vnr-contact-type-option">
+              <input type="radio" id="vnr-contact-type-personal" name="inquiry_type" value="개인" required checked>
+              <label for="vnr-contact-type-personal">개인</label>
+            </span>
+            <span class="vnr-contact-type-option">
+              <input type="radio" id="vnr-contact-type-org" name="inquiry_type" value="기업·기관·단체" required>
+              <label for="vnr-contact-type-org">기업·기관·단체</label>
+            </span>
+          </div>
+        </fieldset>
+
         <div class="vnr-contact-row">
           <div class="vnr-contact-field">
-            <label for="vnr-contact-name">이름 <span aria-hidden="true">*</span></label>
-            <input type="text" id="vnr-contact-name" name="name" required autocomplete="name">
+            <label for="vnr-contact-name">담당자명 <span aria-hidden="true">*</span></label>
+            <input type="text" id="vnr-contact-name" name="contact_name" required autocomplete="name">
           </div>
+          <div class="vnr-contact-field">
+            <label for="vnr-contact-org"><span id="vnr-contact-org-label">소속명</span> <span aria-hidden="true" id="vnr-contact-org-required">*</span></label>
+            <input type="text" id="vnr-contact-org" name="organization" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="vnr-contact-row">
           <div class="vnr-contact-field">
             <label for="vnr-contact-email">이메일 <span aria-hidden="true">*</span></label>
             <input type="email" id="vnr-contact-email" name="email" required autocomplete="email">
           </div>
+          <div class="vnr-contact-field">
+            <label for="vnr-contact-phone">연락처</label>
+            <input type="tel" id="vnr-contact-phone" name="phone" autocomplete="tel">
+          </div>
         </div>
 
         <div class="vnr-contact-field">
-          <label for="vnr-contact-subject">문의 제목</label>
-          <input type="text" id="vnr-contact-subject" name="subject" autocomplete="off">
+          <label for="vnr-contact-project-type">문의 유형 <span aria-hidden="true">*</span></label>
+          <select id="vnr-contact-project-type" name="project_type" required>
+            <option value="" disabled selected hidden>선택해주세요</option>
+            <option value="공간 디자인">공간 디자인</option>
+            <option value="브랜드 협업">브랜드 협업</option>
+            <option value="제품·서비스 제안">제품·서비스 제안</option>
+            <option value="기타">기타</option>
+          </select>
         </div>
 
         <div class="vnr-contact-field">
