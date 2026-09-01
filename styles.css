@@ -273,16 +273,14 @@ button[data-tea-nav][disabled] { opacity: 0.3; cursor: default; }
   gap: 8px;
   margin-bottom: 24px;
 }
-.vnr-contact-field label,
-.vnr-contact-fieldset legend {
+.vnr-contact-field label {
   font-size: 12px;
   letter-spacing: 0.1em;
   color: oklch(0.44 0.008 65);
   font-weight: 600;
 }
 .vnr-contact-field input,
-.vnr-contact-field textarea,
-.vnr-contact-field select {
+.vnr-contact-field textarea {
   font-family: inherit;
   font-size: 15px;
   color: oklch(0.22 0.006 60);
@@ -295,69 +293,25 @@ button[data-tea-nav][disabled] { opacity: 0.3; cursor: default; }
   transition: border-color 0.2s ease;
   resize: vertical;
 }
-.vnr-contact-field select {
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, oklch(0.44 0.008 65) 50%), linear-gradient(135deg, oklch(0.44 0.008 65) 50%, transparent 50%);
-  background-position: right 6px top 55%, right 0px top 55%;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-}
-.vnr-contact-field select:invalid {
-  color: oklch(0.44 0.008 65);
-}
 .vnr-contact-field input:focus,
-.vnr-contact-field textarea:focus,
-.vnr-contact-field select:focus {
+.vnr-contact-field textarea:focus {
   border-bottom-color: oklch(0.22 0.006 60);
 }
 .vnr-contact-field input:invalid.vnr-touched,
-.vnr-contact-field textarea:invalid.vnr-touched,
-.vnr-contact-field select:invalid.vnr-touched {
+.vnr-contact-field textarea:invalid.vnr-touched {
   border-bottom-color: oklch(0.5 0.15 25);
 }
 
-.vnr-contact-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0 0 24px;
-}
-.vnr-contact-fieldset legend {
-  padding: 0 0 10px;
-}
-.vnr-contact-type-group {
-  display: flex;
-  gap: 12px;
-}
-.vnr-contact-type-option { display: contents; }
-.vnr-contact-type-option input {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-}
-.vnr-contact-type-option label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  font-size: 13px;
+.vnr-contact-mailto {
+  color: oklch(0.22 0.006 60);
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: oklch(0.28 0.006 60);
-  background: transparent;
-  border: 1px solid oklch(0.66 0.008 68);
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: oklch(0.66 0.008 68);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
 }
-.vnr-contact-type-option input:checked + label {
-  background: oklch(0.22 0.006 60);
-  border-color: oklch(0.22 0.006 60);
-  color: oklch(0.98 0 0);
-}
-.vnr-contact-type-option input:focus-visible + label {
-  outline: 2px solid oklch(0.22 0.006 60);
-  outline-offset: 2px;
+.vnr-contact-mailto:hover {
+  text-decoration-color: currentColor;
 }
 .vnr-contact-field-error {
   font-size: 12px;
@@ -405,6 +359,4 @@ button[data-tea-nav][disabled] { opacity: 0.3; cursor: default; }
   .vnr-contact-row { grid-template-columns: 1fr; gap: 0; }
   .vnr-contact-footer-row { flex-direction: column-reverse; align-items: stretch; }
   .vnr-contact-submit { width: 100%; }
-  .vnr-contact-type-group { flex-wrap: wrap; }
-  .vnr-contact-type-option label { flex: 1 1 auto; text-align: center; }
 }

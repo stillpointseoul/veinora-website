@@ -572,7 +572,9 @@
   <section id="contact" data-screen-label="CONTACT" style="background: oklch(0.91 0.01 70); padding: min(16vh, 150px) 24px; scroll-margin-top: 78px;">
     <div style="max-width: 640px; margin: 0px auto;">
       <h2 style="margin: 0px 0px 14px; text-align: center; font-size: clamp(26px, 3.6vw, 34px); font-weight: 700; letter-spacing: 0.02em;">CONTACT</h2>
-      <p style="margin: 0px auto 48px; max-width: 440px; text-align: center; font-size: 16px; line-height: 1.75; color: oklch(0.36 0.006 60); text-wrap: balance;">공간과 브랜드에 필요한 회복의 방식을 함께 설계합니다.</p>
+      <p style="margin: 0px auto 24px; max-width: 440px; text-align: center; font-size: 16px; line-height: 1.75; color: oklch(0.36 0.006 60); text-wrap: balance;">공간과 브랜드에 필요한 회복의 방식을 함께 설계합니다.</p>
+
+      <p class="vnr-contact-mailto-line" style="margin: 0px 0px 48px; text-align: center; font-size: 14px; color: oklch(0.36 0.006 60);">메일로 직접 문의하기 <span aria-hidden="true">→</span> <a href="mailto:veinora.seoul@gmail.com" class="vnr-contact-mailto">veinora.seoul@gmail.com</a></p>
 
       <form id="vnr-contact-form" class="vnr-contact-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST" novalidate>
         <!-- TODO: Formspree 발급 후 위 action 값을 실제 주소(https://formspree.io/f/xxxxx)로 교체하고,
@@ -583,51 +585,26 @@
           <input type="text" id="vnr-contact-company" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
 
-        <fieldset class="vnr-contact-field vnr-contact-fieldset">
-          <legend>문의 구분 <span aria-hidden="true">*</span></legend>
-          <div class="vnr-contact-type-group">
-            <span class="vnr-contact-type-option">
-              <input type="radio" id="vnr-contact-type-personal" name="inquiry_type" value="개인" required checked>
-              <label for="vnr-contact-type-personal">개인</label>
-            </span>
-            <span class="vnr-contact-type-option">
-              <input type="radio" id="vnr-contact-type-org" name="inquiry_type" value="기업·기관·단체" required>
-              <label for="vnr-contact-type-org">기업·기관·단체</label>
-            </span>
-          </div>
-        </fieldset>
-
         <div class="vnr-contact-row">
           <div class="vnr-contact-field">
             <label for="vnr-contact-name">담당자명 <span aria-hidden="true">*</span></label>
             <input type="text" id="vnr-contact-name" name="contact_name" required autocomplete="name">
           </div>
           <div class="vnr-contact-field">
-            <label for="vnr-contact-org"><span id="vnr-contact-org-label">소속명</span> <span aria-hidden="true" id="vnr-contact-org-required">*</span></label>
+            <label for="vnr-contact-org">소속명</label>
             <input type="text" id="vnr-contact-org" name="organization" autocomplete="organization">
           </div>
         </div>
 
         <div class="vnr-contact-row">
           <div class="vnr-contact-field">
-            <label for="vnr-contact-email">이메일 <span aria-hidden="true">*</span></label>
-            <input type="email" id="vnr-contact-email" name="email" required autocomplete="email">
+            <label for="vnr-contact-email">이메일</label>
+            <input type="email" id="vnr-contact-email" name="email" autocomplete="email">
           </div>
           <div class="vnr-contact-field">
-            <label for="vnr-contact-phone">연락처</label>
-            <input type="tel" id="vnr-contact-phone" name="phone" autocomplete="tel">
+            <label for="vnr-contact-phone">연락처 <span aria-hidden="true">*</span></label>
+            <input type="tel" id="vnr-contact-phone" name="phone" required autocomplete="tel">
           </div>
-        </div>
-
-        <div class="vnr-contact-field">
-          <label for="vnr-contact-project-type">문의 유형 <span aria-hidden="true">*</span></label>
-          <select id="vnr-contact-project-type" name="project_type" required>
-            <option value="" disabled selected hidden>선택해주세요</option>
-            <option value="공간 디자인">공간 디자인</option>
-            <option value="브랜드 협업">브랜드 협업</option>
-            <option value="제품·서비스 제안">제품·서비스 제안</option>
-            <option value="기타">기타</option>
-          </select>
         </div>
 
         <div class="vnr-contact-field">

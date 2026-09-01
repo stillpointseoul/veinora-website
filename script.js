@@ -297,24 +297,11 @@
   if (contactForm) {
     var submitBtn = document.getElementById('vnr-contact-submit');
     var statusEl = document.getElementById('vnr-contact-status');
-    var fields = contactForm.querySelectorAll('input, textarea, select');
+    var fields = contactForm.querySelectorAll('input, textarea');
 
     fields.forEach(function (field) {
       field.addEventListener('blur', function () { field.classList.add('vnr-touched'); });
     });
-
-    /* 소속명: 기업·기관·단체 선택 시에만 필수 */
-    var orgField = document.getElementById('vnr-contact-org');
-    var orgRequiredMark = document.getElementById('vnr-contact-org-required');
-    var typeRadios = contactForm.querySelectorAll('input[name="inquiry_type"]');
-    function syncOrgRequired() {
-      var isOrg = contactForm.querySelector('input[name="inquiry_type"]:checked').value === '기업·기관·단체';
-      orgField.required = isOrg;
-      orgRequiredMark.style.display = isOrg ? '' : 'none';
-      orgField.classList.remove('vnr-touched');
-    }
-    typeRadios.forEach(function (radio) { radio.addEventListener('change', syncOrgRequired); });
-    syncOrgRequired();
 
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
