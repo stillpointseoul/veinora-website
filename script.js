@@ -133,6 +133,15 @@
     var chipByLabel = {};
     chips.forEach(function (chip) { chipByLabel[chip.textContent.trim()] = chip; });
     var activeChip = null;
+    var activeCard = null;
+    function setActiveCard(idx) {
+      var card = allCards[idx];
+      if (card && card !== activeCard) {
+        if (activeCard) activeCard.classList.remove('is-active-card');
+        card.classList.add('is-active-card');
+        activeCard = card;
+      }
+    }
     function updateIndicator() {
       if (!cardOffsets.length) return;
       var idx = 0;
@@ -146,7 +155,36 @@
         chip.classList.add('is-selected');
         activeChip = chip;
       }
+      setActiveCard(idx);
     }
+
+    /* clicking a keyword chip jumps the carousel to that card */
+    chips.forEach(function (chip) {
+      chip.style.cursor = 'pointer';
+      chip.addEventListener('click', function () {
+        var label = chip.textContent.trim();
+        var stateIdx = CARD_STATES.indexOf(label);
+        if (stateIdx === -1 || !cardOffsets.length) return;
+        var currentIdx = 0;
+        for (var i = 0; i < cardOffsets.length; i++) {
+          if (cardOffsets[i] <= pos) currentIdx = i; else break;
+        }
+        var candidates = [];
+        for (var j = stateIdx; j < allCards.length; j += CARD_STATES.length) candidates.push(j);
+        var bestIdx = candidates[0];
+        var bestDist = Infinity;
+        candidates.forEach(function (c) {
+          var d = Math.abs(c - currentIdx);
+          if (d < bestDist) { bestDist = d; bestIdx = c; }
+        });
+        pos = cardOffsets[bestIdx];
+        state = 'auto';
+        velocity = 0;
+        wrap();
+        applyTransform();
+        updateIndicator();
+      });
+    });
 
     function tick(ts) {
       if (lastTs === null) lastTs = ts;

@@ -91,6 +91,17 @@ a:hover { color: oklch(10% 0.004 55); }
   text-decoration-color: currentColor;
 }
 
+.vnr-track > div.is-active-card { position: relative; }
+.vnr-track > div.is-active-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 3px;
+  background: oklch(16% 0.006 60);
+}
+
 header.is-scrolled {
   background: oklch(96% 0.008 75 / 0.86) !important;
   backdrop-filter: blur(10px);
