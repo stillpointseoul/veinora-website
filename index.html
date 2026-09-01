@@ -26,6 +26,8 @@
 
               <a href="#taste" class="scp0" style="font-size: 13px; letter-spacing: 0.12em; text-decoration: none; color: oklch(0.28 0.006 60); font-weight: 600;"><span class="sc-interp">TASTE</span></a>
 
+              <a href="#contact" class="scp0" style="font-size: 13px; letter-spacing: 0.12em; text-decoration: none; color: oklch(0.28 0.006 60); font-weight: 600;"><span class="sc-interp">CONTACT</span></a>
+
           </nav>
 
         </div>
@@ -566,6 +568,49 @@
     <p data-vnr-id="closing-text" style="opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); margin: 0px auto; max-width: 520px; text-align: center; font-size: clamp(17px, 2.3vw, 19px); line-height: 2.05; font-weight: 600; color: oklch(0.22 0.006 60); text-wrap: balance;">회복의 방식은 사람마다 다릅니다.<br>각자가 자신에게 맞는 방식을 발견하고<br>다시 나다운 감각을 되찾을 수 있는 경험을 설계합니다.</p>
   </section>
 
+
+  <section id="contact" data-screen-label="CONTACT" style="background: oklch(0.91 0.01 70); padding: min(16vh, 150px) 24px; scroll-margin-top: 78px;">
+    <div style="max-width: 640px; margin: 0px auto;">
+      <h2 style="margin: 0px 0px 14px; text-align: center; font-size: clamp(26px, 3.6vw, 34px); font-weight: 700; letter-spacing: 0.02em;">CONTACT</h2>
+      <p style="margin: 0px auto 48px; max-width: 440px; text-align: center; font-size: 16px; line-height: 1.75; color: oklch(0.36 0.006 60); text-wrap: balance;">공간과 브랜드에 필요한 회복의 방식을 함께 설계합니다.</p>
+
+      <form id="vnr-contact-form" class="vnr-contact-form" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST" novalidate>
+        <!-- TODO: Formspree 발급 후 위 action 값을 실제 주소(https://formspree.io/f/xxxxx)로 교체하고,
+             script.js 상단의 VNR_CONTACT_ENDPOINT 상수도 동일한 주소로 함께 교체하세요. -->
+
+        <div class="vnr-contact-honeypot" aria-hidden="true">
+          <label for="vnr-contact-company">회사명 (입력하지 마세요)</label>
+          <input type="text" id="vnr-contact-company" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="vnr-contact-row">
+          <div class="vnr-contact-field">
+            <label for="vnr-contact-name">이름 <span aria-hidden="true">*</span></label>
+            <input type="text" id="vnr-contact-name" name="name" required autocomplete="name">
+          </div>
+          <div class="vnr-contact-field">
+            <label for="vnr-contact-email">이메일 <span aria-hidden="true">*</span></label>
+            <input type="email" id="vnr-contact-email" name="email" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="vnr-contact-field">
+          <label for="vnr-contact-subject">문의 제목</label>
+          <input type="text" id="vnr-contact-subject" name="subject" autocomplete="off">
+        </div>
+
+        <div class="vnr-contact-field">
+          <label for="vnr-contact-message">문의 내용 <span aria-hidden="true">*</span></label>
+          <textarea id="vnr-contact-message" name="message" rows="6" required></textarea>
+        </div>
+
+        <div class="vnr-contact-footer-row">
+          <p class="vnr-contact-status" id="vnr-contact-status" role="status" aria-live="polite"></p>
+          <button type="submit" class="vnr-contact-submit" id="vnr-contact-submit">문의 제출</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <footer data-screen-label="FOOTER" style="background: oklch(0.15 0.004 55); color: oklch(0.8 0.008 70); padding: 32px 24px;">
     <div style="max-width: 1080px; margin: 0px auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">

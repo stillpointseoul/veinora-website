@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  // TODO: Formspree 발급 후 이 값을 실제 주소(https://formspree.io/f/xxxxx)로 교체하세요.
+  // index.html의 <form id="vnr-contact-form"> action 값도 동일한 주소로 함께 교체해야 합니다.
+  var VNR_CONTACT_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID';
+
   var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- header scroll state ---------- */
@@ -286,5 +290,60 @@
     var nextBtn = document.querySelector('button[aria-label="다음"]');
     if (prevBtn) prevBtn.addEventListener('click', function () { nudge(-1); });
     if (nextBtn) nextBtn.addEventListener('click', function () { nudge(1); });
+  }
+
+  /* ---------- contact form ---------- */
+  var contactForm = document.getElementById('vnr-contact-form');
+  if (contactForm) {
+    var submitBtn = document.getElementById('vnr-contact-submit');
+    var statusEl = document.getElementById('vnr-contact-status');
+    var fields = contactForm.querySelectorAll('input, textarea');
+
+    fields.forEach(function (field) {
+      field.addEventListener('blur', function () { field.classList.add('vnr-touched'); });
+    });
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      fields.forEach(function (field) { field.classList.add('vnr-touched'); });
+
+      if (!contactForm.checkValidity()) {
+        statusEl.textContent = '필수 항목을 올바르게 입력해주세요.';
+        statusEl.className = 'vnr-contact-status is-error';
+        return;
+      }
+
+      // honeypot: 봇이 채운 경우 조용히 무시
+      var honeypot = contactForm.querySelector('input[name="_gotcha"]');
+      if (honeypot && honeypot.value) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '전송 중...';
+      statusEl.textContent = '';
+      statusEl.className = 'vnr-contact-status';
+
+      fetch(VNR_CONTACT_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          statusEl.textContent = '문의가 정상적으로 접수되었습니다.';
+          statusEl.className = 'vnr-contact-status is-success';
+          contactForm.reset();
+          fields.forEach(function (field) { field.classList.remove('vnr-touched'); });
+        } else {
+          statusEl.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해주세요.';
+          statusEl.className = 'vnr-contact-status is-error';
+        }
+      }).catch(function () {
+        statusEl.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해주세요.';
+        statusEl.className = 'vnr-contact-status is-error';
+      }).finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '문의 제출';
+      });
+    });
   }
 })();
