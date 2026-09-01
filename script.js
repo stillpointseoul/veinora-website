@@ -1,9 +1,7 @@
 (function () {
   'use strict';
 
-  // TODO: Formspree 발급 후 이 값을 실제 주소(https://formspree.io/f/xxxxx)로 교체하세요.
-  // index.html의 <form id="vnr-contact-form"> action 값도 동일한 주소로 함께 교체해야 합니다.
-  var VNR_CONTACT_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID';
+  var VNR_CONTACT_ENDPOINT = 'https://formspree.io/f/xdeogejn';
 
   var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -298,6 +296,7 @@
     var submitBtn = document.getElementById('vnr-contact-submit');
     var statusEl = document.getElementById('vnr-contact-status');
     var fields = contactForm.querySelectorAll('input, textarea');
+    var isSubmitting = false;
 
     fields.forEach(function (field) {
       field.addEventListener('blur', function () { field.classList.add('vnr-touched'); });
@@ -305,6 +304,8 @@
 
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      if (isSubmitting) return;
 
       fields.forEach(function (field) { field.classList.add('vnr-touched'); });
 
@@ -318,6 +319,7 @@
       var honeypot = contactForm.querySelector('input[name="_gotcha"]');
       if (honeypot && honeypot.value) return;
 
+      isSubmitting = true;
       submitBtn.disabled = true;
       submitBtn.textContent = '전송 중...';
       statusEl.textContent = '';
@@ -341,6 +343,7 @@
         statusEl.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해주세요.';
         statusEl.className = 'vnr-contact-status is-error';
       }).finally(function () {
+        isSubmitting = false;
         submitBtn.disabled = false;
         submitBtn.textContent = '문의 제출';
       });
