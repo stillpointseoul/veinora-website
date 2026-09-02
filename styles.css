@@ -116,10 +116,10 @@ header.is-scrolled {
     padding: 12px 20px 10px !important;
     gap: 8px;
   }
-  .vnr-header-logo img { height: 14px !important; }
+  .vnr-header-logo img { height: 26px !important; }
   .vnr-header-nav { gap: 22px !important; }
   .vnr-header-nav a { font-size: 11px !important; }
-  section[style*="scroll-margin-top: 78px"] { scroll-margin-top: 96px !important; }
+  section[style*="scroll-margin-top: 78px"] { scroll-margin-top: 108px !important; }
 }
 
 .vnr-arrow-wrap.is-drawn { width: 60px !important; }
@@ -370,7 +370,14 @@ button[data-tea-nav][disabled] { opacity: 0.3; cursor: default; }
   cursor: default;
 }
 @media (max-width: 640px) {
-  .vnr-contact-row { grid-template-columns: 1fr; gap: 0; }
+  .vnr-contact-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+  .vnr-contact-row .vnr-contact-field { min-width: 0; }
+  .vnr-contact-row .vnr-contact-field input { width: 100%; min-width: 0; }
   .vnr-contact-footer-row { flex-direction: column-reverse; align-items: stretch; }
   .vnr-contact-submit { width: 100%; }
+}
+@media (max-width: 360px) {
+  .vnr-contact-row { gap: 10px; }
+  .vnr-contact-field label { font-size: 11px; letter-spacing: 0.06em; }
+  .vnr-contact-field input { font-size: 13px; padding: 8px 0; }
 }
