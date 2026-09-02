@@ -108,6 +108,20 @@ header.is-scrolled {
   border-bottom: 1px solid oklch(86% 0.008 70) !important;
 }
 
+@media (max-width: 760px) {
+  .vnr-header-inner {
+    height: auto !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 12px 20px 10px !important;
+    gap: 8px;
+  }
+  .vnr-header-logo img { height: 14px !important; }
+  .vnr-header-nav { gap: 22px !important; }
+  .vnr-header-nav a { font-size: 11px !important; }
+  section[style*="scroll-margin-top: 78px"] { scroll-margin-top: 96px !important; }
+}
+
 .vnr-arrow-wrap.is-drawn { width: 60px !important; }
 
 @media (max-width: 760px) {
