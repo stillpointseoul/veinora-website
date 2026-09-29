@@ -172,13 +172,16 @@ header.is-scrolled {
   }
   .vnr-collection-divider { display: none !important; }
   .vnr-collection-title { white-space: nowrap; }
-  .vnr-food-col,
-  .vnr-spray-col {
+  .vnr-food-col {
     margin-top: 40px !important;
     padding-top: 24px !important;
     border-top: 1px solid oklch(0.78 0.008 70) !important;
   }
   .vnr-food-price { flex-shrink: 0 !important; min-width: 28px !important; text-align: right; }
+  .vnr-spray-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+}
+@media (max-width: 420px) {
+  .vnr-spray-grid { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 767px) {
   .vnr-taste-linebreak-dot { display: none !important; }
