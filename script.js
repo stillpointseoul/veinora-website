@@ -74,6 +74,24 @@
     }
   }
 
+  /* ---------- room spray collection: staggered pop-up reveal ---------- */
+  var sprayGrid = document.querySelector('.vnr-spray-grid');
+  if (sprayGrid) {
+    if (reducedMotion) {
+      sprayGrid.classList.add('is-revealed');
+    } else {
+      var sprayObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            sprayGrid.classList.add('is-revealed');
+            sprayObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      sprayObserver.observe(sprayGrid);
+    }
+  }
+
   /* ---------- TASTE circle -> origin section ---------- */
   var tasteCircle = document.querySelector('[aria-label="TASTE 컬렉션으로 이동"]');
   if (tasteCircle) {

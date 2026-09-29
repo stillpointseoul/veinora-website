@@ -259,6 +259,19 @@ header.is-scrolled {
   .vnr-ddr-slide { transition: none !important; opacity: 1 !important; transform: none !important; }
 }
 
+.vnr-spray-card {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.vnr-spray-grid.is-revealed .vnr-spray-card { opacity: 1; transform: translateY(0); }
+.vnr-spray-grid.is-revealed .vnr-spray-card:nth-child(1) { transition-delay: 0ms; }
+.vnr-spray-grid.is-revealed .vnr-spray-card:nth-child(2) { transition-delay: 140ms; }
+.vnr-spray-grid.is-revealed .vnr-spray-card:nth-child(3) { transition-delay: 280ms; }
+@media (prefers-reduced-motion: reduce) {
+  .vnr-spray-card { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
 .vnr-ddr-section {
   padding-top: calc(min(12vh, 110px) + 44px);
   padding-bottom: calc(min(8vh, 70px) + 44px);
