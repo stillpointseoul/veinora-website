@@ -172,7 +172,8 @@ header.is-scrolled {
   }
   .vnr-collection-divider { display: none !important; }
   .vnr-collection-title { white-space: nowrap; }
-  .vnr-food-col {
+  .vnr-food-col,
+  .vnr-spray-col {
     margin-top: 40px !important;
     padding-top: 24px !important;
     border-top: 1px solid oklch(0.78 0.008 70) !important;
